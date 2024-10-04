@@ -20,7 +20,6 @@ type OutputType string
 
 const (
 	codesignField  = "ios-signing-cert"
-	noCodesignFlag = "--no-codesign"
 
 	OutputTypeAPK       OutputType = "apk"
 	OutputTypeAppBundle OutputType = "appbundle"
@@ -92,14 +91,6 @@ func main() {
 		fmt.Println()
 		log.Infof("iOS Codesign settings")
 
-		iosParams, err := shellquote.Split(cfg.IOSAdditionalParams)
-		if err != nil {
-			failf("Process config: failed to parse iOS additional parameters: %s", err)
-		}
-		if sliceutil.IsStringInSlice(noCodesignFlag, iosParams) {
-			log.Printf(" - Skipping codesign preparation, %s parameter set", noCodesignFlag)
-			goto build
-		}
 		if cfg.IOSOutputType == OutputTypeIOSApp {
 			log.Printf(" - Skipping codesign preparation because output type is iOS app, not xcarchive")
 			goto build

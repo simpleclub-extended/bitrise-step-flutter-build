@@ -204,10 +204,6 @@ func (spec buildSpecification) build(params string) error {
 		platformCmd = string(spec.platformOutputType)
 	}
 
-	if spec.platformOutputType == OutputTypeIOSApp {
-		paramSlice = append(paramSlice, "--no-codesign")
-	}
-
 	buildCmd := command.New("flutter", append([]string{"build", platformCmd}, paramSlice...)...).SetStdout(os.Stdout)
 
 	if spec.platformOutputType == OutputTypeIOSApp || spec.platformOutputType == OutputTypeArchive {
