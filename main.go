@@ -13,7 +13,6 @@ import (
 	"github.com/bitrise-io/go-utils/pathutil"
 	"github.com/bitrise-io/go-utils/sliceutil"
 	"github.com/bitrise-io/go-xcode/certificateutil"
-	shellquote "github.com/kballard/go-shellquote"
 )
 
 type OutputType string
